@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Container = styled.div`
+export const Container = styled.div`
     padding: 0 20px;
     max-width: 480px;
     margin: 0 auto;
 `;
 
-const Header = styled.header`
+export const Header = styled.header`
     height: 20vh;
     display: flex;
     justify-content: center;
@@ -37,7 +37,7 @@ const Coin = styled.li`
     }
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
     color: ${(props) => props.theme.accentColor};
     font-size: 52px;
     font-weight: 500;
@@ -50,7 +50,7 @@ const Img = styled.img`
     margin-right: 12px;
 `;
 
-const Loader = styled.span`
+export const Loader = styled.span`
     text-align: center;
     display: block;
 `;
