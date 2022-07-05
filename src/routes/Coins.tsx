@@ -20,14 +20,15 @@ const CoinsList = styled.ul``;
 const Coin = styled.li`
     background-color: ${(props) => props.theme.txtColor};
     color: ${(props) => props.theme.bgColor};
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     border-radius: 20px;
-    -webkit-box-shadow: 5px 5px 5px 2px rgba(255, 255, 255, 0.2);
-    box-shadow: 5px 5px 5px 2px rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 2px 2px 10px -2px rgba(255, 255, 255, 0.7);
+    box-shadow: 2px 2px 10px -2px rgba(255, 255, 255, 0.7);
     a {
-        transition: color 0.2s ease-in-out;
-        display: block;
+        display: flex;
+        align-items: center;
         padding: 20px;
+        transition: color 0.2s ease-in-out;
     }
     &:hover {
         a {
@@ -38,8 +39,15 @@ const Coin = styled.li`
 
 const Title = styled.h1`
     color: ${(props) => props.theme.accentColor};
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 500;
+    text-shadow: 0px 0px 5px ${(props) => props.theme.accentColor};
+`;
+
+const Img = styled.img`
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
 `;
 
 const Loader = styled.span`
@@ -70,12 +78,12 @@ const Coins = () => {
         })();
     }, []);
 
-    console.log(coins);
+    // console.log(coins);
 
     return (
         <Container>
             <Header>
-                <Title>Coins</Title>
+                <Title>Crypto Coins</Title>
             </Header>
             {loading ? (
                 <Loader>Now Loading</Loader>
@@ -83,7 +91,13 @@ const Coins = () => {
                 <CoinsList>
                     {coins.map((c) => (
                         <Coin key={c.id}>
-                            <Link to={`/${c.id}`}>{c.name} &rarr;</Link>
+                            <Link to={`/${c.id}`}>
+                                <Img
+                                    src={`https://cryptocurrencyliveprices.com/img/${c.id}.png`}
+                                    alt={c.symbol}
+                                />
+                                {c.name} &rarr;
+                            </Link>
                         </Coin>
                     ))}
                 </CoinsList>
