@@ -31,7 +31,12 @@ const GlobalStyle = createGlobalStyle`
         display: none;
     }
     body {
-        line-height: 1;
+        line-height: 1.65;
+        font-weight: 300;
+        font-family: 'Montserrat', sans-serif;
+        background-color: ${(props) => props.theme.bgColor};
+        color: ${(props) => props.theme.txtColor};
+        letter-spacing: 0.1px;
     }
     menu, ol, ul {
         list-style: none;
@@ -50,11 +55,6 @@ const GlobalStyle = createGlobalStyle`
     }
     * {
         box-sizing: border-box;
-    }
-    body {
-        font-family: 'Montserrat', sans-serif;
-        background-color: ${(props) => props.theme.bgColor};
-        color: ${(props) => props.theme.txtColor};
     }
     a {
         text-decoration: none;
