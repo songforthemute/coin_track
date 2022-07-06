@@ -5,6 +5,7 @@ import {
     Routes,
     Route,
     Link,
+    useMatch,
 } from "react-router-dom";
 import styled from "styled-components";
 import { Container, Header, Title, Loader } from "./Coins";
@@ -44,11 +45,40 @@ const Description = styled.p`
     margin: 20px 10px;
 `;
 
+const Tabs = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 25px 0px;
+    gap: 10px;
+`;
+
+const Tab = styled.span<{ isActive: boolean }>`
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.35);
+    padding: 7px 0px;
+    border-radius: 10px;
+    color: ${(props) =>
+        props.isActive ? props.theme.accentColor : props.theme.txtColor};
+    a {
+        display: block;
+    }
+`;
+
+// React TSX Component
 function Coin() {
     const { coinId } = useParams();
     const { state } = useLocation() as LocationParamsInterface;
     const [coinData, setCoinData] = useState<CoinDataInterface>();
     const [priceData, setPriceData] = useState<PriceDataInterface>();
+
+    const priceMatch = useMatch("/:coinId/price");
+    const chartMatch = useMatch("/:coinId/chart");
+
+    console.log(priceMatch, chartMatch);
+
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -109,9 +139,16 @@ function Coin() {
                             <span>{priceData?.max_supply}</span>
                         </OverviewItem>
                     </Overview>
+
                     {/* Link for Nested Routing */}
+                    <Tabs>
+                        <Tab isActive={chartMatch !== null}>
                             <Link to={`/${coinId}/chart`}>Chart</Link>
+                        </Tab>
+                        <Tab isActive={priceMatch !== null}>
                             <Link to={`/${coinId}/price`}>Price</Link>
+                        </Tab>
+                    </Tabs>
 
                     {/* Nested Routing */}
                     <Routes>
