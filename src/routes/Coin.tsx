@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Container, Header, Title, Loader } from "./Coins";
+import { CoinDataInterface, PriceDataInterface } from "./CoinJsonTypes";
 
-interface LocationParams {
+interface LocationParamsInterface {
     state: {
         name: string;
         rank: number;
@@ -11,9 +12,9 @@ interface LocationParams {
 
 function Coin() {
     const { coinId } = useParams();
-    const { state } = useLocation() as LocationParams;
-    const [coinData, setCoinData] = useState({});
-    const [priceData, setPriceData] = useState({});
+    const { state } = useLocation() as LocationParamsInterface;
+    const [coinData, setCoinData] = useState<CoinDataInterface>();
+    const [priceData, setPriceData] = useState<PriceDataInterface>();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,7 +32,7 @@ function Coin() {
 
             setLoading(false);
         })();
-    }, []);
+    }, [coinId]);
 
     return (
         <Container>
@@ -39,7 +40,11 @@ function Coin() {
                 {/* home에서가 아닌, direct로 url에 접근하면 state를 부여받지 못해 가져올 수 없음 */}
                 <Title>{state?.name || "Loading"}</Title>
             </Header>
-            {loading ? <Loader>Now Loading</Loader> : null}
+            {loading ? (
+                <Loader>Now Loading</Loader>
+            ) : (
+                priceData?.quotes.USD.ath_price
+            )}
         </Container>
     );
 }
