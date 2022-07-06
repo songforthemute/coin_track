@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import {
+    useParams,
+    useLocation,
+    Routes,
+    Route,
+    Link,
+} from "react-router-dom";
 import styled from "styled-components";
 import { Container, Header, Title, Loader } from "./Coins";
 import { CoinDataInterface, PriceDataInterface } from "./CoinJsonTypes";
+import Price from "./Price";
+import Chart from "./Chart";
 
 interface LocationParamsInterface {
     state: {
@@ -101,6 +109,15 @@ function Coin() {
                             <span>{priceData?.max_supply}</span>
                         </OverviewItem>
                     </Overview>
+                    {/* Link for Nested Routing */}
+                            <Link to={`/${coinId}/chart`}>Chart</Link>
+                            <Link to={`/${coinId}/price`}>Price</Link>
+
+                    {/* Nested Routing */}
+                    <Routes>
+                        <Route path="price" element={<Price />} />
+                        <Route path="chart" element={<Chart />} />
+                    </Routes>
                 </>
             )}
         </Container>
