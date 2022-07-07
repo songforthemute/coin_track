@@ -72,6 +72,7 @@ const Coins = () => {
         "coinsList",
         fetchCoinsList
     );
+    const coinList = data?.slice(0, 100);
 
     return (
         <Container>
@@ -82,7 +83,7 @@ const Coins = () => {
                 <Loader>Now Loading..</Loader>
             ) : (
                 <CoinsList>
-                    {data?.slice(0, 100).map((c) => (
+                    {coinList?.map((c) => (
                         <Coin key={c.id}>
                             <Link to={`/${c.id}`} state={{ name: c.name }}>
                                 <Img
