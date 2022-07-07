@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import { Container, Header, Title, Loader } from "./Coins";
-import { CoinDataInterface, PriceDataInterface } from "./CoinJsonTypes";
+import { InterfaceCoinData, InterfacePriceData } from "./CoinJsonTypes";
 import Price from "./Price";
 import Chart from "./Chart";
 
@@ -71,8 +71,8 @@ const Tab = styled.span<{ isActive: boolean }>`
 function Coin() {
     const { coinId } = useParams();
     const { state } = useLocation() as LocationParamsInterface;
-    const [coinData, setCoinData] = useState<CoinDataInterface>();
-    const [priceData, setPriceData] = useState<PriceDataInterface>();
+    const [coinData, setCoinData] = useState<InterfaceCoinData>();
+    const [priceData, setPriceData] = useState<InterfacePriceData>();
 
     const priceMatch = useMatch("/:coinId/price");
     const chartMatch = useMatch("/:coinId/chart");

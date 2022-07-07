@@ -55,7 +55,7 @@ export const Loader = styled.span`
     display: block;
 `;
 
-interface CoinInterface {
+interface InterfaceCoinList {
     id: string;
     name: string;
     symbol: string;

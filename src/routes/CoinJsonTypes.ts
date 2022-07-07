@@ -1,5 +1,5 @@
 // CoinData
-export interface CoinDataInterface {
+export interface InterfaceCoinData {
     id: string;
     name: string;
     symbol: string;
@@ -66,7 +66,7 @@ interface Whitepaper {
 }
 
 // PriceData
-export interface PriceDataInterface {
+export interface InterfacePriceData {
     id: string;
     name: string;
     symbol: string;
