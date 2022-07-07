@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { fetchCoinsList } from "../api";
 
 export const Container = styled.div`
     padding: 0 20px;
@@ -66,33 +67,22 @@ interface InterfaceCoinList {
 }
 
 const Coins = () => {
-    const [coins, setCoins] = useState<CoinInterface[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        (async () => {
-            const json = await (
-                await fetch("https://api.coinpaprika.com/v1/coins")
-            ).json();
-
-            setCoins(json.slice(0, 100));
-
-            setLoading(false);
-        })();
-    }, []);
-
-    // console.log(coins);
+    // 기존 Fetch API + useState()와 로직은 비슷하지만, data cache 가능.
+    const { isLoading, data } = useQuery<InterfaceCoinList[]>(
+        "coinsList",
+        fetchCoinsList
+    );
 
     return (
         <Container>
             <Header>
                 <Title>Crypto Coins</Title>
             </Header>
-            {loading ? (
-                <Loader>Now Loading</Loader>
+            {isLoading ? (
+                <Loader>Now Loading..</Loader>
             ) : (
                 <CoinsList>
-                    {coins.map((c) => (
+                    {data?.slice(0, 100).map((c) => (
                         <Coin key={c.id}>
                             <Link to={`/${c.id}`} state={{ name: c.name }}>
                                 <Img
