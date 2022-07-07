@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
     useParams,
     useLocation,
@@ -12,6 +11,8 @@ import { Container, Header, Title, Loader } from "./Coins";
 import { InterfaceCoinData, InterfacePriceData } from "./CoinJsonTypes";
 import Price from "./Price";
 import Chart from "./Chart";
+import { useQuery } from "react-query";
+import { fetchCoinData, fetchPriceData } from "../api";
 
 interface LocationParamsInterface {
     state: {
@@ -71,32 +72,20 @@ const Tab = styled.span<{ isActive: boolean }>`
 function Coin() {
     const { coinId } = useParams();
     const { state } = useLocation() as LocationParamsInterface;
-    const [coinData, setCoinData] = useState<InterfaceCoinData>();
-    const [priceData, setPriceData] = useState<InterfacePriceData>();
+
+    const { isLoading: coinLoading, data: coinData } =
+        useQuery<InterfaceCoinData>(["coin", coinId!], () =>
+            fetchCoinData(coinId!)
+        );
+    const { isLoading: priceLoading, data: priceData } =
+        useQuery<InterfacePriceData>(["price", coinId!], () =>
+            fetchPriceData(coinId!)
+        );
 
     const priceMatch = useMatch("/:coinId/price");
     const chartMatch = useMatch("/:coinId/chart");
 
-    console.log(priceMatch, chartMatch);
-
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        (async () => {
-            const coinJson = await (
-                await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
-            ).json();
-
-            const priceJson = await (
-                await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
-            ).json();
-
-            setCoinData(coinJson);
-            setPriceData(priceJson);
-
-            setLoading(false);
-        })();
-    }, [coinId]);
+    const loading = coinLoading || priceLoading;
 
     return (
         <Container>
