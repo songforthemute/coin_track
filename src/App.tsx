@@ -1,13 +1,13 @@
 import Router from "./Router";
 import GlobalStyle from "./GlobalStyle";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
     return (
         <>
             <GlobalStyle />
             <Router />
-            <ReactQueryDevtools initialIsOpen={true} />
+            {/* <ReactQueryDevtools initialIsOpen={true} /> */}
         </>
     );
 }

@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-    height: 20vh;
+    height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@ export const Title = styled.h1`
     color: ${(props) => props.theme.accentColor};
     font-size: 52px;
     font-weight: 500;
-    text-shadow: 0px 0px 5px ${(props) => props.theme.accentColor};
+    /* text-shadow: 0px 0px 5px ${(props) => props.theme.accentColor}; */
 `;
 
 const Img = styled.img`

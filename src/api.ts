@@ -1,4 +1,4 @@
-const BASE_URL = `https://api.coinpaprika.com/v1`;
+const BASE_URL = process.env.REACT_APP_COINS_SERVER;
 
 export const fetchCoinsList = () => {
     return fetch(`${BASE_URL}/coins`).then((res) => res.json());
