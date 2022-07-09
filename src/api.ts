@@ -20,3 +20,9 @@ export const fetchCoinHistory = (coinId: string) => {
         `${process.env.REACT_APP_COIN_SERVER}/?coinId=${coinId}&start=${startDate}&end=${endDate}`
     ).then((res) => res.json());
 };
+
+export const fetchCoinEvents = (coinId: string) => {
+    return fetch(`${BASE_URL}/coins/${coinId}/events`).then((res) =>
+        res.json()
+    );
+};

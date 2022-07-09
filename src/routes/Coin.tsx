@@ -14,6 +14,7 @@ import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchCoinData, fetchPriceData } from "../api";
 import { Helmet } from "react-helmet";
+import Events from "./Events";
 
 interface InterfaceLocationParams {
     state: {
@@ -49,7 +50,7 @@ const Description = styled.p`
 
 const Tabs = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin: 25px 0px;
     gap: 10px;
 `;
@@ -85,6 +86,7 @@ function Coin() {
 
     const priceMatch = useMatch("/:coinId/price");
     const chartMatch = useMatch("/:coinId/chart");
+    const eventsMatch = useMatch("/:coinId/events");
 
     const loading = coinLoading || priceLoading;
 
@@ -149,6 +151,9 @@ function Coin() {
                         <Tab isActive={priceMatch !== null}>
                             <Link to={`/${coinId}/price`}>Price</Link>
                         </Tab>
+                        <Tab isActive={eventsMatch !== null}>
+                            <Link to={`/${coinId}/events`}>Events</Link>
+                        </Tab>
                     </Tabs>
 
                     {/* Nested Routing */}
@@ -163,6 +168,9 @@ function Coin() {
                                 />
                             }
                         />
+                        <Route
+                            path="events"
+                            element={<Events coinId={coinId!} />}
                         />
                     </Routes>
                 </>
