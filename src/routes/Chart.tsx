@@ -4,6 +4,7 @@ import ApexChart from "react-apexcharts";
 
 interface ChartProps {
     coinId: string;
+    coinName: string;
 }
 
 interface ChartInterface {
@@ -17,10 +18,10 @@ interface ChartInterface {
     volume: string;
 }
 
-type ChartMapArray = ChartInterface[];
+type ChartArray = ChartInterface[];
 
-const Chart = ({ coinId }: ChartProps) => {
-    const { isLoading, data } = useQuery<ChartMapArray>(["ohlcv", coinId], () =>
+const Chart = ({ coinId, coinName }: ChartProps) => {
+    const { isLoading, data } = useQuery<ChartArray>(["ohlcv", coinId], () =>
         fetchCoinHistory(coinId)
     );
 
@@ -39,7 +40,7 @@ const Chart = ({ coinId }: ChartProps) => {
                     type="line"
                     series={[
                         {
-                            name: "Price",
+                            name: `${coinName} Price`,
                             data: closingPrice,
                         },
                     ]}

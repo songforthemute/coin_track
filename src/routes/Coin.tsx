@@ -15,7 +15,7 @@ import { useQuery } from "react-query";
 import { fetchCoinData, fetchPriceData } from "../api";
 import { Helmet } from "react-helmet";
 
-interface LocationParamsInterface {
+interface InterfaceLocationParams {
     state: {
         name: string;
         rank: number;
@@ -72,7 +72,7 @@ const Tab = styled.span<{ isActive: boolean }>`
 // React TSX Component
 function Coin() {
     const { coinId } = useParams();
-    const { state } = useLocation() as LocationParamsInterface;
+    const { state } = useLocation() as InterfaceLocationParams;
 
     const { isLoading: coinLoading, data: coinData } =
         useQuery<InterfaceCoinData>(["coin", coinId!], () =>
@@ -156,7 +156,13 @@ function Coin() {
                         <Route path="price" element={<Price />} />
                         <Route
                             path="chart"
-                            element={<Chart coinId={coinId!} />}
+                            element={
+                                <Chart
+                                    coinId={coinId!}
+                                    coinName={coinData!.name}
+                                />
+                            }
+                        />
                         />
                     </Routes>
                 </>
