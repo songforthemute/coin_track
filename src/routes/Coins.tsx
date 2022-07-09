@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -40,7 +41,7 @@ const Coin = styled.li`
 
 export const Title = styled.h1`
     color: ${(props) => props.theme.accentColor};
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 500;
     /* text-shadow: 0px 0px 5px ${(props) => props.theme.accentColor}; */
 `;
@@ -76,6 +77,9 @@ const Coins = () => {
 
     return (
         <Container>
+            <Helmet>
+                <title>코인 트래커</title>
+            </Helmet>
             <Header>
                 <Title>Crypto Coins</Title>
             </Header>

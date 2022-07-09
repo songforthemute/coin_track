@@ -13,6 +13,7 @@ import Price from "./Price";
 import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchCoinData, fetchPriceData } from "../api";
+import { Helmet } from "react-helmet";
 
 interface LocationParamsInterface {
     state: {
@@ -89,6 +90,15 @@ function Coin() {
 
     return (
         <Container>
+            <Helmet>
+                <title>
+                    {state?.name
+                        ? state.name
+                        : !loading
+                        ? coinData?.name
+                        : "Loading"}
+                </title>
+            </Helmet>
             <Header>
                 {/* home에서가 아닌, direct로 url에 접근하면 state를 부여받지 못해 가져올 수 없음 */}
                 <Title>
@@ -113,8 +123,10 @@ function Coin() {
                             <span>${coinData?.symbol}</span>
                         </OverviewItem>
                         <OverviewItem>
-                            <span>Open Source</span>
-                            <span>{coinData?.open_source ? "Yes" : "No"}</span>
+                            <span>Price</span>
+                            <span>
+                                ${priceData?.quotes.USD.price.toFixed(2)}
+                            </span>
                         </OverviewItem>
                     </Overview>
                     <Description>{coinData?.description}</Description>
