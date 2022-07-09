@@ -81,10 +81,11 @@ export interface InterfacePriceData {
 }
 
 interface Quotes {
-    USD: Usd;
+    USD: Quote;
+    KRW: Quote;
 }
 
-interface Usd {
+interface Quote {
     price: number;
     volume_24h: number;
     volume_24h_change_24h: number;

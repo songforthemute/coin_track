@@ -9,7 +9,9 @@ export const fetchCoinData = (coinId: string) => {
 };
 
 export const fetchPriceData = (coinId: string) => {
-    return fetch(`${BASE_URL}/tickers/${coinId}`).then((res) => res.json());
+    return fetch(`${BASE_URL}/tickers/${coinId}/?quotes=KRW,USD`).then((res) =>
+        res.json()
+    );
 };
 
 export const fetchCoinHistory = (coinId: string) => {

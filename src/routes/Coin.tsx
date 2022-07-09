@@ -80,8 +80,10 @@ function Coin() {
             fetchCoinData(coinId!)
         );
     const { isLoading: priceLoading, data: priceData } =
-        useQuery<InterfacePriceData>(["price", coinId!], () =>
-            fetchPriceData(coinId!)
+        useQuery<InterfacePriceData>(
+            ["price", coinId!],
+            () => fetchPriceData(coinId!),
+            { refetchInterval: 10000 }
         );
 
     const priceMatch = useMatch("/:coinId/price");
@@ -158,7 +160,15 @@ function Coin() {
 
                     {/* Nested Routing */}
                     <Routes>
-                        <Route path="price" element={<Price />} />
+                        <Route
+                            path="price"
+                            element={
+                                <Price
+                                    coinId={coinId!}
+                                    priceData={priceData!}
+                                />
+                            }
+                        />
                         <Route
                             path="chart"
                             element={
