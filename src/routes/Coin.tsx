@@ -48,14 +48,14 @@ const Description = styled.p`
     margin: 20px 10px;
 `;
 
-const Tabs = styled.div`
+export const Tabs = styled.div<{ columns: string }>`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(${(props) => props.columns}, 1fr);
     margin: 25px 0px;
     gap: 10px;
 `;
 
-const Tab = styled.span<{ isActive: boolean }>`
+export const Tab = styled.span<{ isActive: boolean }>`
     text-align: center;
     text-transform: uppercase;
     font-size: 12px;
@@ -146,7 +146,7 @@ function Coin() {
                     </Overview>
 
                     {/* Link for Nested Routing */}
-                    <Tabs>
+                    <Tabs columns="3">
                         <Tab isActive={chartMatch !== null}>
                             <Link to={`/${coinId}/chart`}>Chart</Link>
                         </Tab>

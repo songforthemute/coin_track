@@ -82,7 +82,7 @@ export interface InterfacePriceData {
 
 interface Quotes {
     USD: Quote;
-    KRW: Quote;
+    // KRW: Quote;
 }
 
 interface Quote {
