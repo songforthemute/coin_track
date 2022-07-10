@@ -4,7 +4,6 @@ import { InterfacePriceData } from "./CoinJsonTypes";
 // import { useState } from "react";
 
 interface PriceProps {
-    coinId: string;
     priceData: InterfacePriceData;
 }
 
@@ -28,9 +27,7 @@ const Row = styled.li`
     }
 `;
 
-const SubTitle = styled.span``;
-
-const Price = ({ coinId, priceData }: PriceProps) => {
+const Price = ({ priceData }: PriceProps) => {
     const { USD } = priceData.quotes;
     // const [toggle, setToggle] = useState(true);
     // const [showing, setShowing] = useState(USD);
@@ -39,8 +36,6 @@ const Price = ({ coinId, priceData }: PriceProps) => {
     //     setToggle(!toggle);
     //     toggle ? setShowing(USD) : setShowing(KRW);
     // };
-
-    console.log(USD);
 
     return (
         <>
@@ -77,8 +72,16 @@ const Price = ({ coinId, priceData }: PriceProps) => {
                     {" " + USD.percent_change_12h}%
                 </Row>
                 <Row>
-                    <span>Percent Change in a Day</span>
+                    <span>Percent Change in a day</span>
                     {" " + USD.percent_change_24h}%
+                </Row>
+                <Row>
+                    <span>Percent Change in a month</span>
+                    {" " + USD.percent_change_30d}%
+                </Row>
+                <Row>
+                    <span>Percent Change in a year</span>
+                    {" " + USD.percent_change_1y}%
                 </Row>
             </Rows>
         </>

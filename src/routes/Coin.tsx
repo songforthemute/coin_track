@@ -106,7 +106,7 @@ function Coin() {
         useQuery<InterfacePriceData>(
             ["price", coinId!],
             () => fetchPriceData(coinId!),
-            { refetchInterval: 10000 }
+            { refetchInterval: 60000 }
         );
 
     const priceMatch = useMatch("/:coinId/price");
@@ -185,12 +185,7 @@ function Coin() {
                     <Routes>
                         <Route
                             path="price"
-                            element={
-                                <Price
-                                    coinId={coinId!}
-                                    priceData={priceData!}
-                                />
-                            }
+                            element={<Price priceData={priceData!} />}
                         />
                         <Route
                             path="chart"
