@@ -67,7 +67,7 @@ const Events = ({ coinId }: EventProps) => {
                         <Title>
                             <a href={e.link}>{e.name}</a>
                         </Title>
-                        <Day>{e.date.toString().slice(0, 10)}</Day>
+                        <Day>{new Date(e.date).toLocaleString("ko-kr")}</Day>
                         <Paragraph>
                             {e.description.length < 250
                                 ? e.description
