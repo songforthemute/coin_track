@@ -70,6 +70,29 @@ export const Tab = styled.span<{ isActive: boolean }>`
     }
 `;
 
+const Footer = styled.footer`
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+`;
+
+const Btn = styled.button`
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    color: ${(props) => props.theme.txtColor};
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: color 0.35s ease-in-out;
+    &:hover,
+    &:focus {
+        color: ${(props) => props.theme.accentColor};
+    }
+`;
+
 // React TSX Component
 function Coin() {
     const { coinId } = useParams();
@@ -185,6 +208,11 @@ function Coin() {
                     </Routes>
                 </>
             )}
+            <Footer>
+                <Link to="/">
+                    <Btn>&larr;</Btn>
+                </Link>
+            </Footer>
         </Container>
     );
 }
