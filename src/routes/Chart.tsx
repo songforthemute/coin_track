@@ -54,13 +54,16 @@ const Chart = ({ coinId, coinName }: ChartProps) => {
                         theme: { mode: "dark" },
                         stroke: {
                             curve: "smooth",
-                            width: 4,
+                            width: 3,
                         },
-                        grid: { show: false },
+                        grid: {
+                            show: true,
+                            borderColor: "rgba(255, 255, 255, 0.1)",
+                        },
                         xaxis: {
                             axisTicks: { show: false },
-                            axisBorder: { show: true },
-                            labels: { show: false },
+                            axisBorder: { show: false },
+                            labels: { show: true },
                             categories: closingTime,
                             type: "datetime",
                         },
