@@ -24,14 +24,23 @@ const Article = styled.div`
     padding: 20px 15px;
     background-color: rgba(0, 0, 0, 0.35);
     border-radius: 20px;
+    img {
+        margin-top: 10px;
+        width: 150px;
+        border-radius: 10px;
+        transition: width 0.35s ease-in-out;
+        &:hover {
+            width: 100%;
+        }
+    }
 `;
 
 const Title = styled.h3`
     font-weight: 500;
     font-size: 18px;
-    div {
-        text-align: center;
-        margin: 0 auto;
+    transition: color 0.35s ease-in-out;
+    &:hover {
+        color: ${(props) => props.theme.accentColor};
     }
 `;
 
@@ -74,11 +83,7 @@ const Events = ({ coinId }: EventProps) => {
                                 : e.description.slice(0, 250) + " ..."}
                         </Paragraph>
                         {e.proof_image_link && (
-                            <img
-                                src={e.proof_image_link}
-                                alt="conf_img"
-                                width={100}
-                            />
+                            <img src={e.proof_image_link} alt="conf_img" />
                         )}
                     </Article>
                 ))
