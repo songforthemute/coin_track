@@ -9,7 +9,9 @@ interface PriceProps {
 
 const Rows = styled.ul`
     padding: 15px 10px;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: ${(props) => props.theme.cardBgColor};
+    -webkit-box-shadow: ${(props) => props.theme.boxShadow};
+    box-shadow: ${(props) => props.theme.boxShadow};
     border-radius: 20px;
     h5 {
         padding: 5px 10px;

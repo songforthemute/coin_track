@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinsList } from "../api";
 
+interface InterfaceCoinList {
+    id: string;
+    name: string;
+    symbol: string;
+    rank: number;
+    is_new: boolean;
+    is_active: boolean;
+    type: string;
+}
+
 export const Container = styled.div`
     padding: 0 20px;
     max-width: 480px;
@@ -20,21 +30,25 @@ export const Header = styled.header`
 const CoinsList = styled.ul``;
 
 const Coin = styled.li`
-    background-color: ${(props) => props.theme.txtColor};
-    color: ${(props) => props.theme.bgColor};
-    margin-bottom: 12px;
+    background-color: ${(props) => props.theme.cardBgColor};
+    color: ${(props) => props.theme.txtColor};
+    margin-bottom: 20px;
     border-radius: 20px;
-    -webkit-box-shadow: 2px 2px 10px -2px rgba(255, 255, 255, 0.7);
-    box-shadow: 2px 2px 10px -2px rgba(255, 255, 255, 0.7);
     a {
         display: flex;
         align-items: center;
         padding: 20px;
-        transition: color 0.2s ease-in-out;
+        transition: all 0.25s ease-in;
+        border-radius: 20px;
+        -webkit-box-shadow: ${(props) => props.theme.boxShadow};
+        box-shadow: ${(props) => props.theme.boxShadow};
     }
     &:hover {
         a {
             color: ${(props) => props.theme.accentColor};
+            background-color: ${(props) => props.theme.bgColor};
+            -webkit-box-shadow: inset ${(props) => props.theme.boxShadow};
+            box-shadow: inset ${(props) => props.theme.boxShadow};
         }
     }
 `;
@@ -56,16 +70,6 @@ export const Loader = styled.span`
     text-align: center;
     display: block;
 `;
-
-interface InterfaceCoinList {
-    id: string;
-    name: string;
-    symbol: string;
-    rank: number;
-    is_new: boolean;
-    is_active: boolean;
-    type: string;
-}
 
 const Coins = () => {
     // 기존 Fetch API + useState()와 로직은 비슷하지만, data cache 가능.

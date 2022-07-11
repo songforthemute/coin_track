@@ -26,9 +26,11 @@ interface InterfaceLocationParams {
 const Overview = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: ${(prop) => prop.theme.cardBgColor};
     padding: 20px;
     border-radius: 20px;
+    -webkit-box-shadow: ${(props) => props.theme.boxShadow};
+    box-shadow: ${(props) => props.theme.boxShadow};
 `;
 
 const OverviewItem = styled.div`
@@ -55,23 +57,36 @@ export const Tabs = styled.div<{ columns: string }>`
     gap: 10px;
 `;
 
-export const Tab = styled.span<{ isActive: boolean }>`
+export const Tab = styled.div<{ isActive: boolean }>`
     text-align: center;
     text-transform: uppercase;
     font-size: 12px;
-    font-weight: 400;
-    background-color: rgba(0, 0, 0, 0.35);
+    font-weight: 500;
+    background-color: ${(props) =>
+        props.isActive ? props.theme.bgColor : props.theme.cardBgColor};
     padding: 7px 0px;
-    border-radius: 10px;
+    border-radius: 20px;
+    -webkit-box-shadow: ${(props) =>
+        props.isActive
+            ? `inset ${props.theme.boxShadow}`
+            : `${props.theme.boxShadow}`};
+    box-shadow: ${(props) =>
+        props.isActive
+            ? `inset ${props.theme.boxShadow}`
+            : `${props.theme.boxShadow}`};
     color: ${(props) =>
         props.isActive ? props.theme.accentColor : props.theme.txtColor};
-    a {
-        display: block;
+    transition: all 0.25s ease-in;
+    &:hover,
+    &:focus {
+        background-color: ${(props) => props.theme.bgColor};
+        -webkit-box-shadow: inset ${(props) => props.theme.boxShadow};
+        box-shadow: inset ${(props) => props.theme.boxShadow};
     }
 `;
 
 const Footer = styled.footer`
-    margin: 20px auto;
+    margin: 25px auto;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -82,14 +97,18 @@ const Btn = styled.button`
     width: 50px;
     height: 50px;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     color: ${(props) => props.theme.txtColor};
     font-size: 18px;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: color 0.35s ease-in-out;
+    background-color: ${(props) => props.theme.cardBgColor};
+    transition: all 0.25s ease-in;
+    -webkit-box-shadow: ${(props) => props.theme.boxShadow};
+    box-shadow: ${(props) => props.theme.boxShadow};
     &:hover,
     &:focus {
-        color: ${(props) => props.theme.accentColor};
+        background-color: ${(props) => props.theme.bgColor};
+        -webkit-box-shadow: inset ${(props) => props.theme.boxShadow};
+        box-shadow: inset ${(props) => props.theme.boxShadow};
     }
 `;
 
@@ -170,15 +189,15 @@ function Coin() {
 
                     {/* Link for Nested Routing */}
                     <Tabs columns="3">
-                        <Tab isActive={chartMatch !== null}>
-                            <Link to={`/${coinId}/chart`}>Chart</Link>
-                        </Tab>
-                        <Tab isActive={priceMatch !== null}>
-                            <Link to={`/${coinId}/price`}>Price</Link>
-                        </Tab>
-                        <Tab isActive={eventsMatch !== null}>
-                            <Link to={`/${coinId}/events`}>Events</Link>
-                        </Tab>
+                        <Link to={`/${coinId}/chart`}>
+                            <Tab isActive={chartMatch !== null}>Chart</Tab>
+                        </Link>
+                        <Link to={`/${coinId}/price`}>
+                            <Tab isActive={priceMatch !== null}>Price</Tab>
+                        </Link>
+                        <Link to={`/${coinId}/events`}>
+                            <Tab isActive={eventsMatch !== null}>Events</Tab>
+                        </Link>
                     </Tabs>
 
                     {/* Nested Routing */}

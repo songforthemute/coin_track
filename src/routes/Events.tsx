@@ -22,13 +22,15 @@ type EventsArray = InterfaceEvents[];
 const Article = styled.div`
     margin-bottom: 20px;
     padding: 20px 15px;
-    background-color: rgba(0, 0, 0, 0.35);
     border-radius: 20px;
+    background-color: ${(props) => props.theme.cardBgColor};
+    -webkit-box-shadow: ${(props) => props.theme.boxShadow};
+    box-shadow: ${(props) => props.theme.boxShadow};
     img {
         margin-top: 10px;
         width: 150px;
         border-radius: 10px;
-        transition: width 0.35s ease-in-out;
+        transition: width 0.25s ease-in;
         &:hover {
             width: 100%;
         }
@@ -38,7 +40,7 @@ const Article = styled.div`
 const Title = styled.h3`
     font-weight: 500;
     font-size: 18px;
-    transition: color 0.35s ease-in-out;
+    transition: color 0.25s ease-in;
     &:hover {
         color: ${(props) => props.theme.accentColor};
     }
