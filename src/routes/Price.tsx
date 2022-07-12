@@ -31,24 +31,9 @@ const Row = styled.li`
 
 const Price = ({ priceData }: PriceProps) => {
     const { USD } = priceData.quotes;
-    // const [toggle, setToggle] = useState(true);
-    // const [showing, setShowing] = useState(USD);
-
-    // const _onClick = () => {
-    //     setToggle(!toggle);
-    //     toggle ? setShowing(USD) : setShowing(KRW);
-    // };
 
     return (
         <>
-            {/* <Tabs columns="2">
-                <Tab isActive={toggle} onClick={_onClick}>
-                    USD
-                </Tab>
-                <Tab isActive={!toggle} onClick={_onClick}>
-                    KRW
-                </Tab>
-            </Tabs> */}
             <Rows>
                 <h5>
                     Last Updated{" "}
@@ -82,8 +67,12 @@ const Price = ({ priceData }: PriceProps) => {
                     {" " + USD.percent_change_30d}%
                 </Row>
                 <Row>
-                    <span>Percent Change in a year</span>
-                    {" " + USD.percent_change_1y}%
+                    <span>Market Cap Change in a Day</span>
+                    {" " + USD.market_cap_change_24h}%
+                </Row>
+                <Row>
+                    <span>Volume in a Day</span>
+                    {" " + USD.volume_24h}
                 </Row>
             </Rows>
         </>

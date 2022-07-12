@@ -185,6 +185,10 @@ function Coin() {
                             <span>Max Supply</span>
                             <span>{priceData?.max_supply}</span>
                         </OverviewItem>
+                        <OverviewItem>
+                            <span>Market Cap</span>
+                            <span>{priceData?.quotes.USD.market_cap}</span>
+                        </OverviewItem>
                     </Overview>
 
                     {/* Link for Nested Routing */}

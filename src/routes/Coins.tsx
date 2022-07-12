@@ -23,7 +23,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-    height: 15vh;
+    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@ const CoinsList = styled.ul``;
 const Coin = styled.li`
     background-color: ${(props) => props.theme.cardBgColor};
     color: ${(props) => props.theme.txtColor};
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-radius: 20px;
     a {
         display: flex;
@@ -106,7 +106,7 @@ const Coins = () => {
     return (
         <Container>
             <Helmet>
-                <title>코인 트래커</title>
+                <title>Track the Coins</title>
             </Helmet>
             <Header>
                 <Title>Crypto Coins</Title>
@@ -128,7 +128,7 @@ const Coins = () => {
                                     src={`https://cryptocurrencyliveprices.com/img/${c.id}.png`}
                                     alt={c.symbol}
                                 />
-                                {c.name} &rarr;
+                                {c.name}
                             </Link>
                         </Coin>
                     ))}
