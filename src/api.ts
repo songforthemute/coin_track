@@ -1,18 +1,20 @@
+const BASE_URL = process.env.REACT_APP_COINS_SERVER;
+
 export const fetchCoinsList = () => {
-    return fetch(`${process.env.REACT_APP_COINS_SERVER}/coins`).then((res) =>
+    return fetch(`https://api.coinpaprika.com/v1/coins`).then((res) =>
         res.json()
     );
 };
 
 export const fetchCoinData = (coinId: string) => {
-    return fetch(`${process.env.REACT_APP_COINS_SERVER}/coins/${coinId}`).then(
-        (res) => res.json()
+    return fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`).then((res) =>
+        res.json()
     );
 };
 
 export const fetchPriceData = (coinId: string) => {
     return fetch(
-        `${process.env.REACT_APP_COINS_SERVER}/tickers/${coinId}/?quotes=USD`
+        `https://api.coinpaprika.com/v1/tickers/${coinId}/?quotes=USD`
     ).then((res) => res.json());
 };
 
@@ -23,12 +25,12 @@ export const fetchCoinHistory = (coinId: string) => {
     // `${process.env.REACT_APP_COIN_SERVER_2}/${coinId}/ohlcv/historical/start=${startDate}&end=${endDate}`
 
     return fetch(
-        `${process.env.REACT_APP_COIN_SERVER}/?coinId=${coinId}&start=${startDate}&end=${endDate}`
+        `https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}&start=${startDate}&end=${endDate}`
     ).then((res) => res.json());
 };
 
 export const fetchCoinEvents = (coinId: string) => {
-    return fetch(
-        `${process.env.REACT_APP_COINS_SERVER}/coins/${coinId}/events`
-    ).then((res) => res.json());
+    return fetch(`https://api.coinpaprika.com/v1/coins/${coinId}/events`).then(
+        (res) => res.json()
+    );
 };
