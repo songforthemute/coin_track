@@ -2,8 +2,6 @@
     "name": "coin_track",
     "version": "1.0.0",
     "private": false,
-    "homepage": "https://songforthemute.github.io/coin_track",
-    "proxy": "https://songforthemute.github.io/coin_track",
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.3.0",
