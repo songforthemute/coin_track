@@ -109,7 +109,7 @@ const Coins = () => {
                 <title>Track the Coins</title>
             </Helmet>
             <Header>
-                <Title>Crypto Coins</Title>
+                <Title>Coins</Title>
                 <ToggleBtn
                     onClick={toggleDark}
                     style={isDark ? { paddingLeft: 30 } : { paddingRight: 30 }}
