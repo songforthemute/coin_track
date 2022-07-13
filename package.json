@@ -1,7 +1,8 @@
 {
-    "name": "track-to-coins",
+    "name": "coin_track",
     "version": "1.0.0",
     "private": false,
+    "homepage": "https://songforthemute.github.io/coin_track",
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.3.0",
@@ -28,8 +29,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
@@ -48,5 +49,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "gh-pages": "^4.0.0"
     }
 }
