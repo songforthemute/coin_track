@@ -7,7 +7,7 @@ import {
     useMatch,
 } from "react-router-dom";
 import styled from "styled-components";
-import { Container, Header, Title, Loader } from "./Coins";
+import { Container, Header, Title } from "./Coins";
 import { InterfaceCoinData, InterfacePriceData } from "./CoinJsonTypes";
 import Price from "./Price";
 import Chart from "./Chart";
@@ -15,6 +15,7 @@ import { useQuery } from "react-query";
 import { fetchCoinData, fetchPriceData } from "../api";
 import { Helmet } from "react-helmet";
 import Events from "./Events";
+import Loading from "../Loading";
 
 interface InterfaceLocationParams {
     state: {
@@ -37,6 +38,9 @@ const OverviewItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media screen and (max-width: 767px) {
+        font-size: 10px;
+    }
     span:first-child {
         font-size: 10px;
         font-weight: 500;
@@ -48,6 +52,9 @@ const OverviewItem = styled.div`
 
 const Description = styled.p`
     margin: 20px 10px;
+    @media screen and (max-width: 767px) {
+        font-size: 12px;
+    }
 `;
 
 export const Tabs = styled.div<{ columns: string }>`
@@ -82,6 +89,9 @@ export const Tab = styled.div<{ isActive: boolean }>`
         background-color: ${(props) => props.theme.bgColor};
         -webkit-box-shadow: inset ${(props) => props.theme.boxShadow};
         box-shadow: inset ${(props) => props.theme.boxShadow};
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 10px;
     }
 `;
 
@@ -156,7 +166,7 @@ function Coin() {
                 </Title>
             </Header>
             {loading ? (
-                <Loader>Now Loading..</Loader>
+                <Loading />
             ) : (
                 <>
                     <Overview>
@@ -224,13 +234,15 @@ function Coin() {
                             element={<Events coinId={coinId!} />}
                         />
                     </Routes>
+
+                    {/* Go to Back */}
+                    <Footer>
+                        <Link to="/">
+                            <Btn>&larr;</Btn>
+                        </Link>
+                    </Footer>
                 </>
             )}
-            <Footer>
-                <Link to="/">
-                    <Btn>&larr;</Btn>
-                </Link>
-            </Footer>
         </Container>
     );
 }

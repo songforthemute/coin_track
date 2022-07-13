@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { InterfacePriceData } from "./CoinJsonTypes";
-// import { Tabs, Tab } from "./Coin";
-// import { useState } from "react";
 
 interface PriceProps {
     priceData: InterfacePriceData;
@@ -18,6 +16,13 @@ const Rows = styled.ul`
         opacity: 0.7;
         font-weight: 300;
         font-size: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 12px;
+        padding: 10px 10px;
+        h5 {
+            font-size: 10px;
+        }
     }
 `;
 

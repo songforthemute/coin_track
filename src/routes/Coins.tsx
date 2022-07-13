@@ -5,6 +5,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoinsList } from "../api";
 import { isDarkAtom } from "../atoms";
+import Loading from "../Loading";
 
 interface InterfaceCoinList {
     id: string;
@@ -18,7 +19,7 @@ interface InterfaceCoinList {
 
 export const Container = styled.div`
     padding: 0 20px;
-    max-width: 480px;
+    max-width: 720px;
     margin: 0 auto;
 `;
 
@@ -29,7 +30,14 @@ export const Header = styled.header`
     align-items: center;
 `;
 
-const CoinsList = styled.ul``;
+const CoinsList = styled.ul`
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 20px 0px;
+        gap: 0px 20px;
+    }
+`;
 
 const Coin = styled.li`
     background-color: ${(props) => props.theme.cardBgColor};
@@ -44,14 +52,17 @@ const Coin = styled.li`
         border-radius: 20px;
         -webkit-box-shadow: ${(props) => props.theme.boxShadow};
         box-shadow: ${(props) => props.theme.boxShadow};
-    }
-    &:hover {
-        a {
+        &:hover,
+        &:focus,
+        &:active {
             color: ${(props) => props.theme.accentColor};
             background-color: ${(props) => props.theme.bgColor};
             -webkit-box-shadow: inset ${(props) => props.theme.boxShadow};
             box-shadow: inset ${(props) => props.theme.boxShadow};
         }
+    }
+    @media screen and (max-width: 767px) {
+        margin-bottom: 20px;
     }
 `;
 
@@ -59,21 +70,19 @@ export const Title = styled.h1`
     color: ${(props) => props.theme.accentColor};
     font-size: 48px;
     font-weight: 500;
-    /* text-shadow: 0px 0px 5px ${(props) => props.theme.accentColor}; */
+    text-shadow: 0px 0px 4px ${(props) => props.theme.accentColor};
+    @media screen and (max-width: 767px) {
+        font-size: 24px;
+    }
 `;
 
 const Img = styled.img`
     width: 30px;
     height: 30px;
-    margin-right: 12px;
+    margin-right: 15px;
 `;
 
-export const Loader = styled.span`
-    text-align: center;
-    display: block;
-`;
-
-const ToggleBtn = styled.button`
+const ToggleBtn = styled.button<{ isDark: boolean }>`
     border: 0;
     background-color: ${(props) => props.theme.cardBgColor};
     color: ${(props) => props.theme.txtColor};
@@ -85,6 +94,8 @@ const ToggleBtn = styled.button`
     cursor: pointer;
     -webkit-box-shadow: inset ${(props) => props.theme.boxShadow};
     box-shadow: inset ${(props) => props.theme.boxShadow};
+    padding-left: ${(props) => (props.isDark ? "30px" : "0px")};
+    padding-right: ${(props) => (!props.isDark ? "30px" : "0px")};
     transition: all 0.25s ease-in;
     &:hover {
         background-color: ${(props) => props.theme.bgColor};
@@ -106,19 +117,16 @@ const Coins = () => {
     return (
         <Container>
             <Helmet>
-                <title>Track the Coins</title>
+                <title>Track Coins Track</title>
             </Helmet>
             <Header>
-                <Title>Coins</Title>
-                <ToggleBtn
-                    onClick={toggleDark}
-                    style={isDark ? { paddingLeft: 30 } : { paddingRight: 30 }}
-                >
+                <Title>Crypto Coins</Title>
+                <ToggleBtn onClick={toggleDark} isDark={isDark}>
                     {isDark ? "🌜" : "🌞"}
                 </ToggleBtn>
             </Header>
             {isLoading ? (
-                <Loader>Now Loading..</Loader>
+                <Loading />
             ) : (
                 <CoinsList>
                     {coinList?.map((c) => (

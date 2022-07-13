@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { fetchCoinEvents } from "../api";
+import Loading from "../Loading";
 
 interface EventProps {
     coinId: string;
@@ -44,6 +45,9 @@ const Title = styled.h3`
     &:hover {
         color: ${(props) => props.theme.accentColor};
     }
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+    }
 `;
 
 const Day = styled.h5`
@@ -57,6 +61,9 @@ const Paragraph = styled.p`
     font-size: 14px;
     font-weight: 300;
     opacity: 0.5;
+    @media screen and (max-width: 767px) {
+        font-size: 12px;
+    }
 `;
 
 const Events = ({ coinId }: EventProps) => {
@@ -67,7 +74,7 @@ const Events = ({ coinId }: EventProps) => {
     return (
         <>
             {isLoading ? (
-                "Now Loading.."
+                <Loading />
             ) : !data?.length ? (
                 <Title>
                     <div>No events.</div>
