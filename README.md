@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# 0. Coin Track
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 '`Melon`'에서 인스퍼레이션을 얻어 진행하게 되었습니다.
 
-## Available Scripts
+RESTful API를 이용한 Crypto Coins Tracking Web Application을 목표로, 반응형 디자인으로 구현했습니다.
 
-In the project directory, you can run:
+프로젝트 링크 : [https://songforthemute.github.io/coin_track]("https://songforthemute.github.io/coin_track")
+
+미디엄 블로그 링크 : [https://medium.com/@songforthemute]("https://medium.com/@songforthemute")
+
+---
+
+## 목차
+
+1. 기술 스택
+2. 프로젝트 기능
+3. 프로젝트 스크립트
+
+---
+
+## 1. 기술 스택
+
+-   Language : `TypeScript`
+
+-   Frontend : `ReactJS`, `Styled-component`, `Recoil`, `React-query`, `ApexChart.js`
+
+-   Distribution : `netlify`
+
+---
+
+## 2. 프로젝트 기능
+
+-   메인 페이지 암호화폐 리스트 표시
+
+-   암호화폐 별 상세 페이지와 중첩 라우팅으로 상세 페이지 내부에 차트, 프라이스, 이벤트 탭 구현
+
+-   상세 페이지 내 차트 라이브러리를 통한 최근 동향 그래프 구현
+
+-   Styled-Component와 Recoil을 통한 라이트 모드-다크 모드 테마 토글 구현
+
+-   미디어 쿼리를 이용한 모바일과 데스크톱의 반응형 디자인
+
+-   keyframe animation을 이용한 로딩 컴포넌트 구현
+
+---
+
+## 3. 프로젝트 스크립트
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+프로젝트를 개발 모드로 실행할 수 있습니다. [http://localhost:3000]("http://localhost:3000") 환경에서 실행되며, 기본 포트 넘버는 3000입니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm build`
 
-### `npm test`
+애플리케이션이 `build` 폴더에 빌드됩니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm predeploy`
 
-### `npm run build`
+애플리케이션의 `gh-pages`를 이용한 배포를 하기 위한 사전 빌드 작업입니다. `npm run build`와 같습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm deploy`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`-d 디렉토리명` 폴더의 애플리케이션을 gh-pages를 통해 배포합니다. Github repository에서도 확인할 수 있습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 봐주셔서 감사합니다!
