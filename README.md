@@ -1,8 +1,6 @@
 # 0. Coin Track
 
-이 프로젝트는 '`Melon`'에서 인스퍼레이션을 얻어 진행하게 되었습니다.
-
-RESTful API를 이용한 Crypto Coins Tracking Web Application을 목표로, 반응형 디자인으로 구현했습니다.
+이 프로젝트는 RESTful API를 이용한 Crypto Coins Tracking Web Application을 목표로, 반응형 디자인으로 구현했습니다.
 
 프로젝트 링크 : [https://songforthemute.github.io/coin_track]("https://songforthemute.github.io/coin_track")
 
