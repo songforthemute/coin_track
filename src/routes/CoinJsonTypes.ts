@@ -1,4 +1,3 @@
-// CoinData
 export interface InterfaceCoinData {
     id: string;
     name: string;
