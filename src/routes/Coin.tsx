@@ -171,7 +171,7 @@ function Coin() {
                         <OverviewItem>
                             <span>Price</span>
                             <span>
-                                ${priceData?.quotes.USD.price.toFixed(2)}
+                                ${priceData?.quotes?.USD?.price.toFixed(2)}
                             </span>
                         </OverviewItem>
                     </Overview>
@@ -187,7 +187,7 @@ function Coin() {
                         </OverviewItem>
                         <OverviewItem>
                             <span>Market Cap</span>
-                            <span>{priceData?.quotes.USD.market_cap}</span>
+                            <span>{priceData?.quotes?.USD?.market_cap}</span>
                         </OverviewItem>
                     </Overview>
 
