@@ -2,7 +2,7 @@
 
 이 프로젝트는 RESTful API를 이용한 Crypto Coins Tracking Web Application을 목표로, 반응형 디자인으로 구현했습니다.
 
-프로젝트 링크 : [https://songforthemute.github.io/coin_track]("https://songforthemute.github.io/coin_track")
+프로젝트 링크 : [https://track-coin-track.netlify.app]("https://track-coin-track.netlify.app")
 
 미디엄 블로그 링크 : [https://medium.com/@songforthemute]("https://medium.com/@songforthemute")
 
