@@ -2,7 +2,7 @@
 
 이 프로젝트는 RESTful API를 이용한 Crypto Coins Tracking Web Application을 목표로, 반응형 디자인으로 구현했습니다.
 
-프로젝트 링크 : [https://songforthemute.github.io/coin_track]("https://songforthemute.github.io/coin_track")
+프로젝트 링크 : [https://track-coin-track.netlify.app]("https://track-coin-track.netlify.app")
 
 미디엄 블로그 링크 : [https://medium.com/@songforthemute]("https://medium.com/@songforthemute")
 
@@ -34,11 +34,11 @@
 
 -   상세 페이지 내 차트 라이브러리를 통한 최근 동향 그래프 구현
 
+-   일정 시간 내 방문했던 페이지 재방문 시, 반복적 api 호출이 아닌 react-query로 캐싱한 데이터를 이용해 빠른 응답 제공
+
 -   Styled-Component와 Recoil을 통한 라이트 모드-다크 모드 테마 토글 구현
 
 -   미디어 쿼리를 이용한 모바일과 데스크톱의 반응형 디자인
-
--   keyframe animation을 이용한 로딩 컴포넌트 구현
 
 ---
 
