@@ -4,7 +4,6 @@ import ApexChart from "react-apexcharts";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atoms";
 import Loading from "../Loading";
-import styled from "styled-components";
 
 interface ChartProps {
     coinId: string;
@@ -30,11 +29,16 @@ const Chart = ({ coinId, coinName }: ChartProps) => {
         fetchCoinHistory(coinId)
     );
 
+    console.log(data);
+
     // JS 시간 단위 <=> Unix 시간 단위
     const closingTime = data?.map((p) =>
         new Date(p.time_close * 1000).toISOString().slice(0, -14)
     );
-    const closingPrice = data?.map((p) => Number(p.close)) as number[];
+    const yAxis = data?.map((p) => ({
+        x: new Date(p.time_close * 1000).toISOString().slice(0, -14),
+        y: [Number(p.open), Number(p.high), Number(p.low), Number(p.close)],
+    }));
 
     return (
         <>
@@ -42,15 +46,15 @@ const Chart = ({ coinId, coinName }: ChartProps) => {
                 <Loading />
             ) : (
                 <ApexChart
-                    type="line"
+                    type="candlestick"
                     series={[
                         {
-                            name: `${coinName} Price`,
-                            data: closingPrice,
+                            data: yAxis!,
                         },
                     ]}
                     options={{
                         chart: {
+                            type: "candlestick",
                             height: 320,
                             width: 480,
                             toolbar: { show: false },
@@ -58,8 +62,9 @@ const Chart = ({ coinId, coinName }: ChartProps) => {
                         },
                         theme: { mode: isDark ? "dark" : "light" },
                         stroke: {
+                            lineCap: "round",
                             curve: "smooth",
-                            width: 3,
+                            width: 2,
                         },
                         grid: {
                             show: true,
@@ -76,13 +81,16 @@ const Chart = ({ coinId, coinName }: ChartProps) => {
                         },
                         yaxis: { show: false },
                         fill: {
-                            type: "gradient",
-                            gradient: {
-                                gradientToColors: ["#ed00c5"],
-                                stops: [0, 80],
+                            type: "solid",
+                        },
+                        plotOptions: {
+                            candlestick: {
+                                colors: {
+                                    upward: "#f356d0",
+                                    downward: "#4fd7f6",
+                                },
                             },
                         },
-                        colors: ["#00c5ed"],
                         tooltip: {
                             y: {
                                 formatter: (v) => `$${v.toFixed(2)}`,
