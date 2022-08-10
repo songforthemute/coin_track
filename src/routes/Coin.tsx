@@ -203,13 +203,13 @@ function Coin() {
 
                     {/* Link for Nested Routing */}
                     <Tabs columns="3">
-                        <Link to={`/${coinId}/chart`}>
+                        <Link to={`${process.env.PUBLIC_URL}/${coinId}/chart`}>
                             <Tab isActive={chartMatch !== null}>Chart</Tab>
                         </Link>
-                        <Link to={`/${coinId}/price`}>
+                        <Link to={`${process.env.PUBLIC_URL}/${coinId}/price`}>
                             <Tab isActive={priceMatch !== null}>Price</Tab>
                         </Link>
-                        <Link to={`/${coinId}/events`}>
+                        <Link to={`${process.env.PUBLIC_URL}/${coinId}/events`}>
                             <Tab isActive={eventsMatch !== null}>Events</Tab>
                         </Link>
                     </Tabs>
@@ -237,7 +237,7 @@ function Coin() {
 
                     {/* Go to Back */}
                     <Footer>
-                        <Link to="/">
+                        <Link to={`${process.env.PUBLIC_URL}/`}>
                             <Btn>&larr;</Btn>
                         </Link>
                     </Footer>

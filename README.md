@@ -20,9 +20,9 @@
 
 -   Language : `TypeScript`
 
--   Frontend : `ReactJS`, `Styled-component`, `Recoil`, `React-query`, `ApexChart.js`
+-   Frontend : `ReactJS`, `Styled-component`, `Recoil`, `React-query`, `ApexChart.js`, `React-Helmet`
 
--   Distribution : `netlify`
+-   Distribution : `netlify`, `gh-pages`
 
 ---
 
