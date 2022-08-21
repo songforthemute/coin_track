@@ -131,10 +131,7 @@ const Coins = () => {
                 <CoinsList>
                     {coinList?.map((c) => (
                         <Coin key={c.id}>
-                            <Link
-                                to={`${process.env.PUBLIC_URL}/${c.id}`}
-                                state={{ name: c.name }}
-                            >
+                            <Link to={`/${c.id}`} state={{ name: c.name }}>
                                 <Img
                                     src={`https://cryptocurrencyliveprices.com/img/${c.id}.png`}
                                     alt={c.symbol}
